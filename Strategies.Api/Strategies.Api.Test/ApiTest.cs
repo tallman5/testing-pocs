@@ -6,7 +6,7 @@ namespace Strategies.Api.Test
     public class ApiTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetRocketLaunches()
         {
         }
     }
