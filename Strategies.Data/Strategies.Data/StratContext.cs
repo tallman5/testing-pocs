@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Strategies.Data
 {
+    /// <summary>
+    /// Even though Rockets came from spacexdata.com, we'll be storing them
+    /// in the DB just to have multiple repo types.
+    /// </summary>
     public class StratContext : DbContext, IRocketRepo
     {
         public StratContext() { }
@@ -23,6 +27,7 @@ namespace Strategies.Data
             var assembly = Assembly.GetExecutingAssembly();
             using var resourceStream = assembly.GetManifestResourceStream("Strategies.Data.Responses.get-all-rockets.json");
             using var reader = new StreamReader(resourceStream, Encoding.UTF8);
+
             string rocketJson = reader.ReadToEnd();
             var allRockets = JsonSerializer.Deserialize<List<Rocket>>(
                 rocketJson, 
@@ -48,7 +53,7 @@ namespace Strategies.Data
 
         public async Task<List<Rocket>> GetRocketsAsync()
         {
-            Database.EnsureCreated();
+            Database.EnsureCreated(); // Not needed if using SQL Server
 
             var returnValue = await Rockets
                 .AsNoTracking()

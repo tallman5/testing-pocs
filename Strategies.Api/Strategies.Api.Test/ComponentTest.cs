@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 namespace Strategies.Api.Test
 {
     [TestClass]
-    public class ApiTest
+    public class ComponentTest
     {
+        // Dependencies to be mocked
+
         private async Task<T> GetAsync<T>(string url)
         {
             using var httpClient = testServer.CreateClient();

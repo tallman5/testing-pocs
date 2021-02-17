@@ -31,8 +31,6 @@ namespace Strategies.Api
         {
             services.AddControllers();
 
-            //services.AddDbContext<StratContext>(opt => opt.UseInMemoryDatabase("strat-in-mem-db"));
-
             services.AddSingleton<ILaunchRepo, LaunchRepo>();
             services.AddSingleton<IRocketRepo, StratContext>();
 

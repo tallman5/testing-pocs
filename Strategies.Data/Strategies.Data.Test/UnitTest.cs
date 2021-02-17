@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Strategies.Data.Test
 {
     [TestClass]
-    public class DataTest
+    public class UnitTest
     {
         [TestMethod]
         public async Task GetRocketsAsync()
@@ -15,7 +15,6 @@ namespace Strategies.Data.Test
                 .UseInMemoryDatabase("strat-in-mem-db");
 
             using StratContext stratContext = new StratContext(builder.Options);
-            stratContext.Database.EnsureCreated();
 
             var rockets = await stratContext.GetRocketsAsync();
 
